@@ -6,6 +6,7 @@ to be retrained with the same cadence, necessitating an end-to-end pipeline that
 
 In this project you will build such a pipeline.
 
+GitHub link: https://github.com/italocosilva/short-term-rental-prices
 W&B link: https://wandb.ai/italocosilva/nyc_airbnb
 
 ## Table of contents
