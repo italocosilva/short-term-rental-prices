@@ -24,8 +24,6 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.pipeline import Pipeline, make_pipeline
 
-from hydra import compose, initialize
-
 
 def delta_date_feature(dates):
     """
@@ -39,12 +37,9 @@ def delta_date_feature(dates):
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
+
 def go(args):
-    # Get hydra config
-    initialize(version_base=None, config_path='./')
-    config = compose(config_name="config")
-    print(config)
-    print(config.max_features)
+
     run = wandb.init(job_type="train_random_forest")
     run.config.update(args)
 
@@ -55,7 +50,6 @@ def go(args):
 
     # Fix the random seed for the Random Forest, so we get reproducible results
     rf_config['random_state'] = args.random_seed
-    rf_config['max_features'] = config.max_features
 
     logger.info(f'Loading artifact {args.trainval_artifact}')
     trainval_local_path = run.use_artifact(args.trainval_artifact).file()

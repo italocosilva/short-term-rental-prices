@@ -35,18 +35,12 @@ entry_points:
       output_artifact:
         description: Name for the output artifact
         type: string
-      
-      hydra_options:
-        description: Other configuration parameters to override
-        type: str
-        default: --multirun
 
     command: >-
-      "python run.py $(echo {hydra_options}) \
-                    --trainval_artifact {trainval_artifact} \
+      python run.py --trainval_artifact {trainval_artifact} \
                     --val_size {val_size} \
                     --random_seed {random_seed} \
                     --stratify_by {stratify_by} \
                     --rf_config {rf_config} \
                     --max_tfidf_features {max_tfidf_features} \
-                    --output_artifact {output_artifact}"
+                    --output_artifact {output_artifact}
