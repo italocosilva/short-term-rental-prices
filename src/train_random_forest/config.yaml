@@ -1,0 +1,17 @@
+defaults:
+  - override hydra/sweeper: optuna
+  - override hydra/sweeper/sampler: tpe
+
+hydra:
+  sweeper:
+    sampler:
+      seed: 23
+    direction: maximize
+    study_name: random_forest_training
+    storage: null
+    n_trials: 2
+    n_jobs: 1
+    params:
+      max_features: range(0.1, 1, step=0.05)
+
+max_features: 0.1
